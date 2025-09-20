@@ -6,7 +6,7 @@ import ContactList from './ContactList';
 import Pagination from './Pagination';
 import { FiSearch, FiPlus } from 'react-icons/fi';
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = 'https://contact-book-app-jk07.onrender.com';
 
 const LIMIT = 8;
 
