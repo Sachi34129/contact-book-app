@@ -1,0 +1,193 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+:root{
+  --accent: #2b99ff;
+  --muted: #7b8a93;
+  --danger: #e53935;
+  --card-bg: #fff;
+  --app-bg: #f3f6f8;
+  --glass: rgba(255,255,255,0.8);
+}
+
+*{box-sizing:border-box}
+body,html,#root{height:100%; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;}
+
+.app {
+  min-height:100vh;
+  background: linear-gradient(180deg, #f6f9fb 0%, #eef4f8 100%);
+  padding:28px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+.container {
+  width:100%;
+  max-width:1100px;
+  background:transparent;
+}
+
+/* header */
+.header {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-bottom:18px;
+}
+.search {
+  flex:1;
+  display:flex;
+  align-items:center;
+  background:var(--card-bg);
+  border-radius:28px;
+  padding:10px 14px;
+  box-shadow:0 2px 8px rgba(16,24,40,0.06);
+}
+.search input{
+  border:0; outline:0; width:100%; font-size:14px;
+}
+.addBtn{
+  background:linear-gradient(90deg,var(--accent),#3bb0ff);
+  color:white;
+  border:0;
+  padding:10px 16px;
+  border-radius:999px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(43,153,255,0.18);
+}
+
+/* grid */
+.grid {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:14px;
+}
+@media (max-width:900px){ .grid{ grid-template-columns: repeat(2,1fr);} }
+@media (max-width:600px){ .grid{ grid-template-columns: 1fr; } }
+
+/* card */
+.tile {
+  background:var(--card-bg);
+  border-radius:14px;
+  padding:16px;
+  box-shadow:0 6px 18px rgba(22,31,41,0.06);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  transform-origin:center;
+  animation: tileIn 260ms ease;
+}
+@keyframes tileIn{
+  from{opacity:0; transform:translateY(8px) scale(.99)}
+  to{opacity:1; transform:none}
+}
+
+.tile .top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.name { font-weight:700; font-size:18px; color:#0f1724; }
+.meta { color:var(--muted); font-size:13px; display:flex; gap:10px; align-items:center;}
+
+/* icon buttons row */
+.row { display:flex; gap:8px; align-items:center; margin-top:8px; }
+.iconBtn {
+  border:0; background:transparent; padding:6px; border-radius:8px; cursor:pointer;
+}
+.copyBtn{ font-size:13px; color:var(--muted); }
+
+.deleteBtn{
+  background:var(--danger);
+  color:white;
+  border:0;
+  padding:8px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* modal */
+.modalOverlay {
+  position:fixed; inset:0; display:flex; justify-content:center; align-items:center;
+  background:rgba(6,12,20,0.45); z-index:50;
+}
+.modal {
+  background:var(--card-bg);
+  border-radius:12px;
+  padding:20px;
+  width:420px;
+  max-width:95%;
+  box-shadow:0 10px 30px rgba(16,24,40,0.35);
+}
+.formRow{ display:flex; flex-direction:column; gap:6px; margin-bottom:10px; }
+.formRow input{ padding:10px 12px; border-radius:8px; border:1px solid #e6eef2; outline:none; }
+.formError{ color:var(--danger); font-size:13px; }
+
+/* spinner */
+.spinner {
+  width:26px; height:26px; border-radius:50%;
+  border:4px solid rgba(0,0,0,0.08);
+  border-top-color:var(--accent); animation:spin 1s linear infinite;
+}
+@keyframes spin{ to{transform:rotate(360deg)} }
+
+/* small utils */
+.small{font-size:13px; color:var(--muted)}
+.controls{display:flex; gap:10px; align-items:center}
+.button{background:var(--accent); color:white; padding:8px 12px; border-radius:8px; border:0; cursor:pointer}
+.btnGhost{background:transparent; border:1px solid #e6eef2; padding:8px 10px; border-radius:8px; cursor:pointer}
+
+/* delete animation (fades and shrinks) */
+.tile.deleting{
+  animation: tileOut 260ms forwards;
+}
+@keyframes tileOut{
+  to{opacity:0; transform:translateY(-8px) scale(.96); height:0; margin:0; padding:0}
+}
+
+/* search styles */
+.search .icon{ margin-right:8px; color:var(--muted) ; font-size:18px }
+
+/* footer / pagination */
+.pager{display:flex; justify-content:center; gap:8px; margin-top:18px; align-items:center}
+.pager button{padding:8px 10px; border-radius:8px; border:0; cursor:pointer}
