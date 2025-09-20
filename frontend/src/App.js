@@ -27,7 +27,7 @@ function App(){
   async function fetchContacts(p=1, q=''){
     setLoading(true);
     try{
-      const res = await axios.get(`/contacts?page=${p}&limit=${LIMIT}&q=${encodeURIComponent(q)}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/contacts?page=${p}&limit=${LIMIT}&q=${encodeURIComponent(q)}`);
       // server returns {contacts, total}
       setContacts(res.data.contacts || []);
       setTotal(res.data.total || 0);
